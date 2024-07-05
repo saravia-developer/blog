@@ -1,0 +1,21 @@
+<h1>{{ title }}</h1>
+
+<h4 *ngIf="!blogs && !blogById">Loading...</h4>
+
+<ul *ngIf="blogs && !blogById">
+  <li *ngFor="let blog of blogs">
+    <a (click)="getBlogById(blog.id)" >
+      {{ blog.title }}
+    </a>
+  </li>
+</ul>
+
+<div *ngIf="!blogs && blogById">
+  <h2>{{ blogById.title }}</h2>
+  <p>{{ blogById.body }}</p>
+
+  <button (click)="getBlogs()">
+    Ir al menú general
+  </button>
+</div>
+

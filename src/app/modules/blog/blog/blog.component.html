@@ -1,0 +1,12 @@
+<h1>{{ title }}</h1>
+
+<h4 *ngIf="!blogs && !blogById">Loading...</h4>
+
+<ul *ngIf="blogs && !blogById">
+  <li *ngFor="let blog of blogs">
+    <a [routerLink]="['/post-single', blog.id]">
+      {{ blog.title }}
+    </a>
+  </li>
+</ul>
+

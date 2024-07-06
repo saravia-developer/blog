@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { BlogService } from './services/blog.service';
-import { IBlogs } from './interfaces/blog.interface';
+import { BlogService } from '../services/blog.service';
+import { IBlogs } from '../interfaces/blog.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -13,7 +14,8 @@ export class BlogComponent {
   blogById: IBlogs | undefined
 
   constructor(
-    public blogServices: BlogService
+    private blogServices: BlogService,
+    private router: Router
   ){
     this.getBlogs()
   }
@@ -29,6 +31,7 @@ export class BlogComponent {
     this.blogServices.getPostById(id).subscribe(post => {
       this.blogById = post;
       this.blogs = undefined;
+      // this.router.navigate([`/post-single/${id}`])
     })
   }
 }
